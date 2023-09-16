@@ -72,21 +72,24 @@ page = Markdown(
             <p>200 University Avenue West Waterloo, Ontario</p>
         </div>
     </div>
-  <div class="grid-item" style="border: 1px solid #ccc; padding: 20px;">
+<div class="grid-container" style="display: flex; gap: 10px;">
+
+        <div class="grid-item" style="flex: 1; border: 1px solid #ccc; padding: 20px;">
             <div class="header" style="font-size: 24px; margin-bottom: 10px; color: #064F3C;">Box 1 Header</div>
             <div class="description" style="font-size: 16px;">This is the description for Box 1.</div>
         </div>
 
-        <div class="grid-item" style="border: 1px solid #ccc; padding: 20px;">
+        <div class="grid-item" style="flex: 1; border: 1px solid #ccc; padding: 20px;">
             <div class="header" style="font-size: 24px; margin-bottom: 10px; color: #0B8565;">Box 2 Header</div>
             <div class="description" style="font-size: 16px;">This is the description for Box 2.</div>
         </div>
 
-        <div class="grid-item" style="border: 1px solid #ccc; padding: 20px;">
+        <div class="grid-item" style="flex: 1; border: 1px solid #ccc; padding: 20px;">
             <div class="header" style="font-size: 24px; margin-bottom: 10px; color: #FA9B76;">Box 3 Header</div>
             <div class="description" style="font-size: 16px;">This is the description for Box 3.</div>
         </div>
 
+    </div>
 
 </div>
 """
