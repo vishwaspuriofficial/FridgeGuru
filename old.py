@@ -91,30 +91,9 @@ page = """
 </div>
 """
 
-
-# def image_action(state):
-#     webbrowser.open("https://taipy.io")
-
 def on_button_action(state):
     notify(state, 'info', f'The text is: {state.text}')
     state.text = "Button Pressed"
-
-# def on_change(state, var_name, var_value):
-#     if var_name == "text" and var_value == "Reset":
-#         state.text = ""
-#         return
-
-# def on_push(state):
-#     ...
-
-
-# def on_slider(state):
-#     if state.value == 100:
-#         notify(state, "success", "Taipy is running!")
-
-
-# def on_change(state, var_name: str, var_value):
-#     ...
 
 
 if __name__ == "__main__":

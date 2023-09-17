@@ -1,6 +1,6 @@
 
+from ultralytics import YOLO
 def imageDetection(upload):
-    from ultralytics import YOLO
     model = YOLO('vision/FoodModel.pt')
     #try:
     results = model(source=upload, show=True, conf=0.4, save=True)
@@ -18,9 +18,7 @@ def imageDetection(upload):
                     res[class_name] = 1
     else:
             print("No results found.")
-    #except Exception as e:
-    #print("her problem")
-    return str(res)
+    return ", ".join(f"{v} {k}" for k, v in res.items())
 
 if __name__ == '__main__':
     imageDetection(upload)
