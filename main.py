@@ -1,6 +1,5 @@
 from taipy.gui import Gui, Markdown, notify
 
-
 class User:
     def __init__(self, name, size, items):
         self.name = name
