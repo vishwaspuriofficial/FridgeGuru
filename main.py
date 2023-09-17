@@ -1,5 +1,6 @@
 from taipy.gui import Gui, Markdown, notify
 
+
 class User:
     def __init__(self, name, size, items):
         self.name = name
@@ -46,7 +47,7 @@ page = Markdown(
 <input id="profile" type="test" placeholder="Preference Eg. Indian Food" style="width: 80%;" />
 </div>
 <div class="section" style="margin-bottom: 30px;">
-<button class="submit-button" style="padding: 10px 20px; font-size: 16px; background-color: #0B8565; color: white; border: none; cursor: pointer;">Submit</button>
+<button class="submit-button" style="padding: 10px 20px; font-size: 16px; background-color: #0B8565; color: white; border: none; cursor: pointer;" onclick="console.log("hi")">Submit</button>
 </div>
 <div class="section" style="margin-bottom: 30px;">
 <h2 style="font-size: 36px; margin-bottom: 10px;">2. Upload a picture ⬆️</h2>
