@@ -1,32 +1,28 @@
 from taipy.gui import Gui, Markdown, notify
 
 class User:
-    def __init__(self, name, size, items):
+    def getItems(image):
+        items = {'apple':1}  # 'item: # of items'
+        # TODO: Object Classification using YOLO Code goes here
+        return items
+    def __init__(self, name, size, image):
         self.name = name
         self.size = size
-        self.items = items
+        self.items = getItems(image)
 
-    def updateItems(self, items):
-        self.items = items
+         # TODO: Research and create prompt for ideal results
+        prompt = open("prompt.txt", "r").read()
+        # TODO: Plug in items available and their quantities
+        # TODO: Send this prompt to BentoML
+        ideas = "Hello" + name
+        # ideas = BentoML(...)
+        return ideas
 
+    
 
-def getItems(image):
-    items = {}  # 'item: # of items'
-    # TODO: Object Classification using YOLO Code goes here
-    return items
+text = 0
 
-
-def getMeals(items):
-    # TODO: Research and create prompt for ideal results
-    prompt = open("prompt.txt", "r").read()
-    # TODO: Plug in items available and their quantities
-    # TODO: Send this prompt to BentoML
-    # ideas = BentoML(...)
-    return ideas
-
-
-page = Markdown(
-    """
+page = """
 <div style="font-family: 'Lato', sans-serif; background-color:#FCFCFC; color: #064F3C; margin: 0; padding: 0; box-sizing: border-box;">
 
     <img src="banner.png" alt="NavBar" class="banner" style="width: 100%;" />
@@ -46,15 +42,15 @@ page = Markdown(
 <input id="profile" type="test" placeholder="Preference Eg. Indian Food" style="width: 80%;" />
 </div>
 <div class="section" style="margin-bottom: 30px;">
-<button class="submit-button" style="padding: 10px 20px; font-size: 16px; background-color: #0B8565; color: white; border: none; cursor: pointer;">Submit</button>
-</div>
-<div class="section" style="margin-bottom: 30px;">
 <h2 style="font-size: 36px; margin-bottom: 10px;">2. Upload a picture ⬆️</h2>
  <div class="upload-btn-wrapper" style="position: relative; overflow: hidden; display: inline-block;">
                 <button class="btn" style="border: 2px solid gray; color: gray; background-color: white; padding: 8px 20px; border-radius: 8px; font-size: 16px; font-weight: bold;">Upload a file</button>
                 <input type="file" name="myfile" style="font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0;" />
             </div>
         </div>
+<div class="section" style="margin-bottom: 30px;">
+<button id="submit" class="submit-button" style="padding: 10px 20px; font-size: 16px; background-color: #0B8565; color: white; border: none; cursor: pointer;">Submit</button>
+</div>
 
         <div class="section" style="margin-bottom: 30px;">
             <h2 style="font-size: 36px; margin-bottom: 10px;">3. Recipes! 🥗</h2>
@@ -74,7 +70,7 @@ page = Markdown(
  <div class="grid-container" style="display: flex; gap: 10px; margin-left: 30px; margin-right: 30px;">
 
         <div class="grid-item" style="flex: 1; border: 1px solid #ccc; padding: 20px;">
-            <div class="header" style="font-size: 24px; margin-bottom: 10px; color: #064F3C;">Box 1 Header</div>
+            <div class="header" style="font-size: 24px; margin-bottom: 10px; color: #064F3C;">*<|{text}|>*</div>
             <div class="description" style="font-size: 16px;">This is the description for Box 1.</div>
         </div>
 
@@ -92,24 +88,31 @@ page = Markdown(
 
 </div>
 """
-)
 
 
 # def image_action(state):
 #     webbrowser.open("https://taipy.io")
 
+def on_button_action(state):
+    notify(state, 'info', f'The text is: {state.text}')
+    state.text = "Button Pressed"
 
-def on_push(state):
-    ...
+# def on_change(state, var_name, var_value):
+#     if var_name == "text" and var_value == "Reset":
+#         state.text = ""
+#         return
+
+# def on_push(state):
+#     ...
 
 
-def on_slider(state):
-    if state.value == 100:
-        notify(state, "success", "Taipy is running!")
+# def on_slider(state):
+#     if state.value == 100:
+#         notify(state, "success", "Taipy is running!")
 
 
-def on_change(state, var_name: str, var_value):
-    ...
+# def on_change(state, var_name: str, var_value):
+#     ...
 
 
 if __name__ == "__main__":
